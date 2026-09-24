@@ -3,8 +3,8 @@
 /** Export real Livewire-rendered states as deterministic video capture sources. */
 
 use Illuminate\Contracts\Console\Kernel;
-use Livewire\Livewire;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
 

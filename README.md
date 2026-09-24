@@ -8,6 +8,18 @@
 **Стек:** Laravel 13 · Livewire 4 · PHP 8.4 · Alem `qwen3-8` (опционально)  
 **Данные:** 66 профилей в `storage/app/private/contractors.csv`
 
+## Видео-демо — 85 секунд
+
+[![Смотреть демо seelect — от ручного поиска к понятному выбору](public/videos/seelect-demo-poster.jpg)](public/videos/seelect-demo-ru.mp4)
+
+**[Смотреть / скачать MP4](public/videos/seelect-demo-ru.mp4)** · Full HD, 30 fps · русская озвучка, музыка и субтитры.
+
+Раньше — вкладки и ручные проверки. Теперь — форма или чат, до трёх рекомендаций с объяснениями, проверка дат, честные причины отказа, профиль и демо-заявка.
+
+**Работа команды nxt:** Рашитов Ришат, Тілеген Бейбарыс, Серік Әлішер.
+
+[Исходник HyperFrames](resources/videos/seelect-demo/index.html) · [Сценарий](resources/videos/seelect-demo/STORYBOARD.md) · [Субтитры SRT](public/videos/seelect-demo-ru.srt)
+
 ---
 
 ## Питч в двух минутах

@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, renameSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 
@@ -24,7 +24,10 @@ for (const scene of scenes) {
   const target = scene.duration - 0.6;
   const rate = Math.max(1, (source.duration - trim) / target);
   const out = resolve(audioDir, `voice-${scene.n}.wav`);
-  run(['-i', raw, '-af', `atrim=start=${trim},asetpts=PTS-STARTPTS,atempo=${rate.toFixed(6)},loudnorm=I=-16:TP=-1.5:LRA=9,adelay=200|200,apad,atrim=duration=${scene.duration}`, '-ar', '48000', '-ac', '1', out]);
+  run(['-i', raw, '-af', `atrim=start=${trim},asetpts=PTS-STARTPTS,atempo=${rate.toFixed(6)},loudnorm=I=-16:TP=-1.5:LRA=9,aresample=48000,asetpts=PTS-STARTPTS,adelay=200|200,apad=whole_dur=${scene.duration}`, '-t', String(scene.duration), '-ar', '48000', '-ac', '1', out]);
+  const fixed = resolve(audioDir, `voice-${scene.n}-fixed.wav`);
+  run(['-i', out, '-af', 'apad', '-t', String(scene.duration), '-c:a', 'pcm_s16le', fixed]);
+  renameSync(fixed, out);
   for (const word of source.word_timestamps.filter(word => !word.word.startsWith('<'))) {
     words.push({ text: word.word, start: scene.start + 0.2 + Math.max(0, word.start - trim) / rate, end: scene.start + 0.2 + Math.max(0, word.end - trim) / rate, scene: scene.n });
   }

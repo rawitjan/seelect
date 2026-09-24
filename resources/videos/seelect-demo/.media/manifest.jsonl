@@ -1,0 +1,32 @@
+{"id":"bgm_001","type":"bgm","path":"assets/audio/music-source.wav","source":"existing","description":"music source","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_002","type":"bgm","path":"assets/audio/music.wav","source":"existing","description":"music","provenance":{"provider":"local","adopted":true}}
+{"id":"voice_001","type":"voice","path":"assets/audio/narration.wav","source":"existing","description":"narration","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_003","type":"bgm","path":"assets/audio/raw-1.wav","source":"existing","description":"raw 1","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_004","type":"bgm","path":"assets/audio/raw-10.wav","source":"existing","description":"raw 10","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_005","type":"bgm","path":"assets/audio/raw-2.wav","source":"existing","description":"raw 2","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_006","type":"bgm","path":"assets/audio/raw-3.wav","source":"existing","description":"raw 3","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_007","type":"bgm","path":"assets/audio/raw-4.wav","source":"existing","description":"raw 4","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_008","type":"bgm","path":"assets/audio/raw-5.wav","source":"existing","description":"raw 5","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_009","type":"bgm","path":"assets/audio/raw-6.wav","source":"existing","description":"raw 6","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_010","type":"bgm","path":"assets/audio/raw-7.wav","source":"existing","description":"raw 7","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_011","type":"bgm","path":"assets/audio/raw-8.wav","source":"existing","description":"raw 8","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_012","type":"bgm","path":"assets/audio/raw-9.wav","source":"existing","description":"raw 9","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_013","type":"bgm","path":"assets/audio/voice-1.wav","source":"existing","description":"voice 1","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_014","type":"bgm","path":"assets/audio/voice-10.wav","source":"existing","description":"voice 10","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_015","type":"bgm","path":"assets/audio/voice-2.wav","source":"existing","description":"voice 2","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_016","type":"bgm","path":"assets/audio/voice-3.wav","source":"existing","description":"voice 3","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_017","type":"bgm","path":"assets/audio/voice-4.wav","source":"existing","description":"voice 4","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_018","type":"bgm","path":"assets/audio/voice-5.wav","source":"existing","description":"voice 5","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_019","type":"bgm","path":"assets/audio/voice-6.wav","source":"existing","description":"voice 6","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_020","type":"bgm","path":"assets/audio/voice-7.wav","source":"existing","description":"voice 7","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_021","type":"bgm","path":"assets/audio/voice-8.wav","source":"existing","description":"voice 8","provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_022","type":"bgm","path":"assets/audio/voice-9.wav","source":"existing","description":"voice 9","provenance":{"provider":"local","adopted":true}}
+{"id":"icon_001","type":"icon","path":"assets/brand-mark.svg","source":"existing","description":"brand mark","provenance":{"provider":"local","adopted":true}}
+{"id":"image_001","type":"image","path":"assets/chat.png","source":"existing","description":"chat","provenance":{"provider":"local","adopted":true}}
+{"id":"image_002","type":"image","path":"assets/date.png","source":"existing","description":"date","provenance":{"provider":"local","adopted":true}}
+{"id":"image_003","type":"image","path":"assets/empty.png","source":"existing","description":"empty","provenance":{"provider":"local","adopted":true}}
+{"id":"image_004","type":"image","path":"assets/form.png","source":"existing","description":"form","provenance":{"provider":"local","adopted":true}}
+{"id":"image_005","type":"image","path":"assets/hero.png","source":"existing","description":"hero","provenance":{"provider":"local","adopted":true}}
+{"id":"image_006","type":"image","path":"assets/profile.png","source":"existing","description":"profile","provenance":{"provider":"local","adopted":true}}
+{"id":"image_007","type":"image","path":"assets/results.png","source":"existing","description":"results","provenance":{"provider":"local","adopted":true}}
+{"id":"image_008","type":"image","path":"assets/wedding.jpg","source":"existing","description":"wedding","provenance":{"provider":"local","adopted":true}}
