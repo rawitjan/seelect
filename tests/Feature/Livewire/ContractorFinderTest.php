@@ -12,7 +12,11 @@ beforeEach(function () {
 it('serves a public finder and searches without database queries', function () {
     DB::listen(fn () => throw new RuntimeException('The finder must not query a database.'));
 
-    $this->get(route('home'))->assertOk()->assertSee('Ваш повод.')->assertSee('Подобрать подрядчиков');
+    $this->get(route('home'))->assertOk()
+        ->assertSee('Ваш повод.')
+        ->assertSee('Подобрать подрядчиков')
+        ->assertSee('CRM для агентств и специалистов')
+        ->assertSee('В разработке');
     Livewire::test('pages::contractor-finder')
         ->call('search')
         ->assertHasNoErrors()

@@ -54,7 +54,7 @@ class AiContractorConversation
                 'known_draft' => $draft,
                 'allowed' => $options,
                 'date_range' => ['from' => '2026-09-23', 'to' => '2026-12-31'],
-                'messages' => $messages,
+                'messages' => array_slice($messages, -6),
             ], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 
             $response = agent(
@@ -82,7 +82,7 @@ class AiContractorConversation
                 $payload,
                 provider: $provider,
                 model: config('contractors.ai_model'),
-                timeout: config('contractors.chat_timeout', 45),
+                timeout: config('contractors.chat_timeout', 12),
             );
 
             if (! $response instanceof StructuredAgentResponse) {

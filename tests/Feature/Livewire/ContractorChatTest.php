@@ -55,6 +55,24 @@ it('normalizes free-text budget and optional language answers', function () {
     expect($guide->normalize('hours', ''))->toMatchArray(['ok' => true, 'value' => null]);
 });
 
+it('advances known chip answers without waiting for the AI agent', function () {
+    config([
+        'contractors.ai_enabled' => true,
+        'contractors.ai_provider' => 'openai',
+        'ai.providers.openai.key' => 'test-key',
+    ]);
+    StructuredAnonymousAgent::fake();
+
+    Livewire::test('pages::contractor-finder')
+        ->call('openChat')
+        ->call('selectChatChip', 'Алматы')
+        ->assertSet('chatStep', 'event_format')
+        ->assertSet('chatNlp', false)
+        ->assertSee('Какой формат мероприятия?');
+
+    StructuredAnonymousAgent::assertPromptedTimes(0);
+});
+
 it('uses NLP conversation to collect criteria and match contractors', function () {
     config([
         'contractors.ai_enabled' => true,

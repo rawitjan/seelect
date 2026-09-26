@@ -42,6 +42,10 @@ new #[Layout('layouts.finder')] class extends Component {
     #[Locked]
     public string $pendingChatRaw = '';
 
+    /** Whether the queued turn should call the natural-language agent. */
+    #[Locked]
+    public bool $pendingChatUsesNlp = false;
+
     /** @var list<array{role: string, text: string}> */
     public array $chatMessages = [];
 
@@ -198,6 +202,7 @@ new #[Layout('layouts.finder')] class extends Component {
         $this->chatBusy = false;
         $this->chatNlp = false;
         $this->pendingChatRaw = '';
+        $this->pendingChatUsesNlp = false;
         $this->chatMessages = [
             ['role' => 'assistant', 'text' => __('Давайте сначала. Где и какое событие планируете?')],
         ];
@@ -232,7 +237,7 @@ new #[Layout('layouts.finder')] class extends Component {
         }
 
         $label = collect($guide->chips($this->chatStep))->firstWhere('value', $value)['label'] ?? $value;
-        $this->queueChatTurn($label === '' ? __('Пропущено') : (string) $label, $value);
+        $this->queueChatTurn($label === '' ? __('Пропущено') : (string) $label, $value, false);
     }
 
     public function sendChatMessage(): void
@@ -242,7 +247,7 @@ new #[Layout('layouts.finder')] class extends Component {
             return;
         }
 
-        $this->queueChatTurn($text, $text);
+        $this->queueChatTurn($text, $text, true);
     }
 
     public function skipChatStep(ContractorChatGuide $guide): void
@@ -253,7 +258,7 @@ new #[Layout('layouts.finder')] class extends Component {
             return;
         }
 
-        $this->queueChatTurn(__('Пропущено'), '');
+        $this->queueChatTurn(__('Пропущено'), '', false);
     }
 
     public function completeChatTurn(
@@ -267,10 +272,12 @@ new #[Layout('layouts.finder')] class extends Component {
         }
 
         $rawValue = $this->pendingChatRaw;
+        $usesNlp = $this->pendingChatUsesNlp;
         $this->pendingChatRaw = '';
+        $this->pendingChatUsesNlp = false;
 
         try {
-            $nlp = $conversation->converse($this->chatMessages, $this->chatDraft);
+            $nlp = $usesNlp ? $conversation->converse($this->chatMessages, $this->chatDraft) : null;
 
             if ($nlp !== null) {
                 $this->chatNlp = true;
@@ -326,10 +333,11 @@ new #[Layout('layouts.finder')] class extends Component {
         $this->result = $matcher->match($this->submitted);
     }
 
-    private function queueChatTurn(string $display, string $rawValue): void
+    private function queueChatTurn(string $display, string $rawValue, bool $usesNlp): void
     {
         $this->chatBusy = true;
         $this->pendingChatRaw = $rawValue;
+        $this->pendingChatUsesNlp = $usesNlp;
         $this->chatMessages[] = ['role' => 'user', 'text' => $display];
         $this->chatInput = '';
 
@@ -650,6 +658,32 @@ new #[Layout('layouts.finder')] class extends Component {
                         </div>
                     </div>
                 @endif
+            </div>
+        </section>
+
+        <section class="roadmap-section" aria-labelledby="roadmap-title">
+            <div class="roadmap-intro">
+                <p class="eyebrow">{{ __('Скоро в seelect') }}</p>
+                <h2 id="roadmap-title">{{ __('Инструменты, которые помогают специалистам расти.') }}</h2>
+                <p>{{ __('Мы создаём рабочее пространство для агентств и независимых специалистов: от первого обращения до сайта, который приводит новых клиентов.') }}</p>
+            </div>
+            <div class="roadmap-grid">
+                <article class="roadmap-feature roadmap-feature-primary">
+                    <p class="roadmap-status">{{ __('В разработке') }}</p>
+                    <span class="roadmap-number">01</span>
+                    <h3>{{ __('CRM для агентств и специалистов') }}</h3>
+                    <p>{{ __('Заявки, бронирования, календарь, команда и клиентская история в одном понятном рабочем пространстве.') }}</p>
+                    <div class="roadmap-rail" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                </article>
+                <article class="roadmap-feature roadmap-feature-secondary">
+                    <p class="roadmap-status">{{ __('В разработке') }}</p>
+                    <span class="roadmap-number">02</span>
+                    <h3>{{ __('Ваш сайт под вашим брендом') }}</h3>
+                    <p>{{ __('White-label сайт агентства или специалиста с услугами и рекомендациями из вашего собственного каталога.') }}</p>
+                    <div class="roadmap-site-preview" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                </article>
             </div>
         </section>
 
